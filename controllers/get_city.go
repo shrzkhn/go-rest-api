@@ -14,7 +14,7 @@ func GetCity(c *gin.Context) {
 	// Fetch the city
 	var city models.City
 	if err := models.DB.Where("Id = ?", id).First(&city).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
 		return
 	}
 
