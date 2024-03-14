@@ -13,6 +13,7 @@ func main() {
 	models.ConnectToDatabase()
 
 	router.POST("/api/city", controllers.AddCity)
+	router.GET("/api/city/:id", controllers.GetCity)
 
 	router.Run()
 }
