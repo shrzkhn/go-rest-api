@@ -16,6 +16,7 @@ COPY . .
 RUN go mod download
 
 # Install CompileDaemon locally
+RUN go get github.com/githubnemo/CompileDaemon
 RUN go install github.com/githubnemo/CompileDaemon
 
 # This container exposes port 8080 to the outside world
