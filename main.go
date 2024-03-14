@@ -14,6 +14,7 @@ func main() {
 
 	router.POST("/api/city", controllers.AddCity)
 	router.GET("/api/city/:id", controllers.GetCity)
+	router.PATCH("/api/city/:id", controllers.UpdateCity)
 
 	router.Run()
 }
