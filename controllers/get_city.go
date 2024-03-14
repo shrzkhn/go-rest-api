@@ -11,12 +11,11 @@ func GetCity(c *gin.Context) {
 	// Extract the city ID from the URL
 	id := c.Param("id")
 
-	var city models.City
-
 	// Fetch the city
-	result := models.DB.Where("Id = ?", id).Find(&city)
-	if result.Error != nil {
-		panic("Failed to get city: " + result.Error.Error())
+	var city models.City
+	if err := models.DB.Where("Id = ?", id).First(&city).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": city})
